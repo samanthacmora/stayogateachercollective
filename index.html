@@ -45,6 +45,9 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 18px 44px;
+  background: rgba(214,236,249,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
   transition: background 0.3s;
 }
 nav.scrolled {
@@ -57,7 +60,7 @@ nav.scrolled {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.95);
+  color: var(--ink);
   transition: color 0.3s;
 }
 nav.scrolled .nav-logo { color: var(--ink); }
@@ -68,7 +71,7 @@ nav.scrolled .nav-logo { color: var(--ink); }
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
+  color: var(--muted);
   transition: color 0.3s;
 }
 nav.scrolled .nav-links { color: var(--muted); }
@@ -84,9 +87,9 @@ nav.scrolled .nav-links { color: var(--muted); }
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  background: rgba(255,255,255,0.15);
+  background: var(--forest);
   color: #fff;
-  border: 1px solid rgba(255,255,255,0.3);
+  border: 1px solid var(--forest);
   padding: 9px 20px;
   border-radius: 100px;
   backdrop-filter: blur(6px);
@@ -98,7 +101,10 @@ nav.scrolled .nav-btn {
   color: #fff;
   border-color: var(--forest);
 }
-.nav-btn.nav-secondary { background: rgba(255,255,255,0.06); }
+.nav-btn.nav-secondary {
+  background: transparent;
+  color: var(--forest);
+}
 nav.scrolled .nav-btn.nav-secondary {
   background: transparent;
   color: var(--forest);
@@ -118,7 +124,12 @@ nav.scrolled .nav-btn.nav-secondary {
 .hero-mesh {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, var(--sky) 0%, var(--mint) 34%, var(--gold) 68%, var(--lilac) 100%);
+  background:
+    radial-gradient(circle at 12% 18%, #74d7ff 0%, transparent 30%),
+    radial-gradient(circle at 70% 16%, #ff9fc8 0%, transparent 28%),
+    radial-gradient(circle at 86% 72%, #ffd36e 0%, transparent 32%),
+    radial-gradient(circle at 22% 82%, #c5a6ff 0%, transparent 30%),
+    linear-gradient(135deg, #97eddd 0%, #b8f2a9 45%, #ffb58e 100%);
 }
 .blob {
   position: absolute;
@@ -206,23 +217,26 @@ nav.scrolled .nav-btn.nav-secondary {
   animation: fadeUp 0.7s ease 0.55s both;
 }
 .hero-event {
-  padding: 14px 16px;
-  border: 1px solid rgba(255,255,255,0.22);
+  padding: 16px 18px;
+  border: 1px solid rgba(255,255,255,0.24);
   border-radius: 16px;
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.16);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 16px 32px rgba(14,30,40,0.14);
 }
+.hero-event-meetup { background: rgba(217,196,255,0.18); }
+.hero-event-beach { background: rgba(255,181,142,0.18); }
 .hero-event-label {
-  font-size: 9px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.58);
-  margin-bottom: 6px;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 8px;
 }
 .hero-event-title {
   font-family: 'Playfair Display', serif;
-  font-size: 21px;
+  font-size: 24px;
   line-height: 1.1;
   color: #fff;
   margin-bottom: 4px;
@@ -230,7 +244,7 @@ nav.scrolled .nav-btn.nav-secondary {
 .hero-event-detail {
   font-size: 12px;
   line-height: 1.5;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255,255,255,0.72);
 }
 .hero-actions {
   display: flex;
@@ -404,19 +418,20 @@ nav.scrolled .nav-btn.nav-secondary {
   gap: 16px;
 }
 .work-card {
-  padding: 36px 28px;
+  padding: 32px 26px;
   border-radius: 16px;
   transition: transform 0.2s, box-shadow 0.2s;
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(22,53,34,0.1);
 }
 .work-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(14,30,40,0.12); }
-.work-card:nth-child(1) { background: var(--forest); color: #fff; }
-.work-card:nth-child(2) { background: var(--aqua); color: #0a2b28; }
-.work-card:nth-child(3) { background: var(--sky); color: #0a1e2e; }
-.work-card:nth-child(4) { background: var(--coral); color: #2a1a0a; }
-.work-card:nth-child(5) { background: var(--gold); color: #302408; }
-.work-card:nth-child(6) { background: #e8c8f0; color: #2a1a30; }
+.work-card:nth-child(1) { background: linear-gradient(150deg, #b7f0ff 0%, #e6d2ff 58%, #fff0b8 100%); color: #0a1e2e; }
+.work-card:nth-child(2) { background: linear-gradient(150deg, #d9c4ff 0%, #f3d9f2 52%, #ffefb8 100%); color: #2a1a30; }
+.work-card:nth-child(3) { background: linear-gradient(150deg, #fff0b8 0%, #ffd7b8 55%, #b7f0ff 100%); color: #302408; }
+.work-card:nth-child(4) { background: linear-gradient(150deg, #ffb6a3 0%, #ffe08a 52%, #b7f0b1 100%); color: #2a1a0a; }
+.work-card:nth-child(5) { background: linear-gradient(150deg, #b7f0b1 0%, #8be7dc 55%, #e6d2ff 100%); color: #0a2b28; }
+.work-card:nth-child(6) { background: linear-gradient(150deg, #e8c8f0 0%, #b7f0ff 55%, #ffe08a 100%); color: #2a1a30; }
 .work-num {
   font-family: 'Playfair Display', serif;
   font-style: italic;
@@ -819,11 +834,19 @@ nav.scrolled .nav-btn.nav-secondary {
 
 /* ── JOIN CTA ── */
 .join {
-  display: none;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  background: var(--forest);
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .join-photo {
   position: absolute;
   inset: 0;
+  display: block;
 }
 .join-photo img {
   width: 100%;
@@ -834,28 +857,29 @@ nav.scrolled .nav-btn.nav-secondary {
 .join-photo-over {
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, rgba(26,51,32,0.75) 0%, rgba(14,30,40,0.7) 100%);
+  display: block;
+  background: linear-gradient(160deg, rgba(22,53,34,0.72) 0%, rgba(14,30,40,0.58) 100%);
 }
 .join-blob1 { display: none; }
 .join-blob2 { display: none; }
-.join-inner { position: relative; z-index: 2; max-width: 560px; margin: 0 auto; padding: 100px 24px; }
-.join-rule { width: 1px; height: 52px; background: rgba(255,255,255,0.12); margin: 0 auto 40px; }
+.join-inner { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; padding: 120px 24px; }
+.join-rule { display: none; }
 .join-h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 60px;
+  font-size: 56px;
   font-weight: 900;
   font-style: italic;
   line-height: 0.95;
   color: #fff;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   letter-spacing: 0;
 }
 .join-sub {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 300;
-  line-height: 1.85;
-  color: rgba(255,255,255,0.55);
-  margin-bottom: 40px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.74);
+  margin-bottom: 30px;
 }
 .join-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 .btn-mint {
@@ -880,8 +904,8 @@ nav.scrolled .nav-btn.nav-secondary {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   background: transparent;
-  color: rgba(255,255,255,0.6);
-  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.82);
+  border: 1px solid rgba(255,255,255,0.34);
   padding: 15px 32px;
   border-radius: 100px;
   text-decoration: none;
@@ -889,28 +913,29 @@ nav.scrolled .nav-btn.nav-secondary {
   transition: border-color 0.2s, color 0.2s;
   cursor: pointer;
 }
-.btn-outline-white:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
-.join-rule-bot { width: 1px; height: 52px; background: rgba(255,255,255,0.12); margin: 40px auto 0; }
+.btn-outline-white:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
+.join-rule-bot { display: none; }
 
 /* ── FOOTER ── */
 footer {
-  background: #0f1a12;
-  padding: 28px 52px;
+  background: #eaf7ff;
+  padding: 24px 52px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
+  border-top: 1px solid var(--border);
 }
 .footer-logo {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.25);
+  color: rgba(14,30,40,0.6);
 }
 .footer-links {
-  display: flex;
+  display: none;
   gap: 24px;
   list-style: none;
   font-size: 9px;
@@ -924,10 +949,7 @@ footer {
 }
 .footer-links a:hover { color: var(--mint); }
 .footer-copy {
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.12);
+  display: none;
 }
 
 /* ── RESPONSIVE ── */
@@ -949,7 +971,11 @@ footer {
   .about-left, .about-right { padding: 52px 24px; }
   .community { padding: 52px 24px 40px; }
   .community-header { grid-template-columns: 1fr; }
-  .work-grid { grid-template-columns: 1fr; }
+  .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .work-card { padding: 18px 14px; border-radius: 14px; min-height: 190px; }
+  .work-num { margin-bottom: 10px; }
+  .work-title { font-size: 17px; }
+  .work-body { display: block; font-size: 11px; line-height: 1.55; }
   .partners { padding: 44px 18px 52px; }
   .partners-label { margin-bottom: 24px; }
   .partners-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
@@ -960,9 +986,10 @@ footer {
   .ayo-mark { width: 94px; height: 74px; }
   .ayo-main { font-size: 40px; }
   .ayo-sub { font-size: 7px; margin-top: 6px; }
-  .join { padding: 64px 24px; }
+  .join { min-height: 520px; }
+  .join-inner { padding: 96px 20px; }
   .join-h2 { font-size: 44px; }
-  footer { padding: 20px 24px; flex-direction: column; align-items: flex-start; }
+  footer { padding: 20px 24px; flex-direction: column; align-items: center; text-align: center; }
 }
 
 /* ── COMMUNITY SUPPORTERS ── */
@@ -1234,15 +1261,15 @@ footer {
     <h1 class="hero-h1">the mat is<br/>the doorway.</h1>
     <p class="hero-sub">For teachers and practitioners who feel the practice calling them further: into community, into care, into action, and into the places where yoga becomes lived.</p>
     <div class="hero-events" aria-label="Upcoming gatherings">
-      <div class="hero-event">
+      <div class="hero-event hero-event-meetup">
         <p class="hero-event-label">Next meetup</p>
-        <h2 class="hero-event-title">Coming soon</h2>
-        <p class="hero-event-detail">September · date and location coming soon.</p>
+        <h2 class="hero-event-title">September</h2>
+        <p class="hero-event-detail">Date and location coming soon.</p>
       </div>
-      <div class="hero-event">
+      <div class="hero-event hero-event-beach">
         <p class="hero-event-label">Save the date</p>
-        <h2 class="hero-event-title">Beach day</h2>
-        <p class="hero-event-detail">August 1 · sunrise practice, then play.</p>
+        <h2 class="hero-event-title">August 1 Beach Day</h2>
+        <p class="hero-event-detail">Sunrise practice, then food, music, and time to hang.</p>
       </div>
     </div>
   </div>
@@ -1260,7 +1287,7 @@ footer {
     <p class="section-label">Who we are</p>
     <h2 class="section-h2">A community<br/>for yoga <em>teachers.</em></h2>
     <p class="about-body">A space where yoga teachers come to skill-share, find support, and move with purpose together. When the work feels heavy, we help each other listen for what is asking to be cared for. This is where practice grows roots in community.</p>
-    <p class="about-body">At the center is teacher-to-teacher support: sharing what we know, asking for what we need, and letting care move both ways. Reciprocity is part of the practice.</p>
+    <p class="about-body">At the center of this collective are teachers supporting teachers. We share what we have studied, what we are practicing, what we are learning the hard way, and what might help someone else keep going. Reciprocity is part of the practice: care moving both ways, not one more thing to buy or prove.</p>
     <p class="about-body">All bodies, gender identities, sexual orientations, backgrounds, and lived experiences are welcome here. If you are a yoga teacher looking for community, support, and a place to keep learning alongside others, you belong here.</p>
     <div class="about-tags">
       <span class="tag">Community-led</span>
@@ -1348,8 +1375,11 @@ footer {
   <div class="join-inner">
     <div class="join-rule"></div>
     <h2 class="join-h2">You belong here.</h2>
-    <p class="join-sub">If you have ever felt the practice asking you to move with more care, courage, and connection, you are not alone. Come as you are. There is room here for your questions, your ideas, and your way of serving.</p>
-    <div class="join-rule-bot"></div>
+    <p class="join-sub">Join the email list for meetup notes, save-the-dates, and collective updates. Join the Facebook group for the everyday conversation.</p>
+    <div class="join-btns">
+      <a href="https://stayogateachercollective.substack.com/subscribe" class="btn-mint" target="_blank" rel="noopener">Email List</a>
+      <a href="https://www.facebook.com/share/g/1E5MrqrHX4/" class="btn-outline-white" target="_blank" rel="noopener">FB Group</a>
+    </div>
   </div>
 </section>
 
@@ -1364,13 +1394,5 @@ footer {
   <div class="footer-copy">Grassroots · Free · Always · Est. 2025</div>
 </footer>
 
-<script>
-// Nav scroll effect
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-});
-
-</script>
 </body>
 </html>
