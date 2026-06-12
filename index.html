@@ -27,7 +27,7 @@
 }
 
 html { scroll-behavior: smooth; }
-#about, #community, #meetup, #skillshare { scroll-margin-top: 84px; }
+#about, #community { scroll-margin-top: 84px; }
 
 body {
   background: var(--cream);
@@ -74,6 +74,11 @@ nav.scrolled .nav-logo { color: var(--ink); }
 nav.scrolled .nav-links { color: var(--muted); }
 .nav-links a { color: inherit; text-decoration: none; transition: color 0.2s; }
 .nav-links a:hover { color: var(--forest); }
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 .nav-btn {
   font-size: 10px;
   font-weight: 500;
@@ -92,6 +97,11 @@ nav.scrolled .nav-btn {
   background: var(--forest);
   color: #fff;
   border-color: var(--forest);
+}
+.nav-btn.nav-secondary { background: rgba(255,255,255,0.06); }
+nav.scrolled .nav-btn.nav-secondary {
+  background: transparent;
+  color: var(--forest);
 }
 .nav-btn:hover { background: var(--forest); color: #fff; border-color: var(--forest); }
 
@@ -185,8 +195,42 @@ nav.scrolled .nav-btn {
   line-height: 1.75;
   color: rgba(255,255,255,0.75);
   max-width: 420px;
-  margin-bottom: 36px;
+  margin-bottom: 22px;
   animation: fadeUp 0.7s ease 0.4s both;
+}
+.hero-events {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 260px));
+  gap: 12px;
+  max-width: 560px;
+  animation: fadeUp 0.7s ease 0.55s both;
+}
+.hero-event {
+  padding: 14px 16px;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+}
+.hero-event-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.58);
+  margin-bottom: 6px;
+}
+.hero-event-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 21px;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.hero-event-detail {
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.7);
 }
 .hero-actions {
   display: flex;
@@ -448,14 +492,14 @@ nav.scrolled .nav-btn {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0;
+  gap: 18px;
 }
 .event-card {
-  background: transparent;
-  backdrop-filter: none;
-  border: none;
-  border-radius: 0;
-  padding: 0;
+  background: rgba(255,255,255,0.48);
+  border: 1px solid rgba(26,51,32,0.1);
+  border-radius: 14px;
+  padding: 24px;
+  backdrop-filter: blur(10px);
 }
 .event-label {
   font-size: 9px;
@@ -479,6 +523,12 @@ nav.scrolled .nav-btn {
   font-weight: 300;
   color: rgba(26,51,32,0.6);
   line-height: 1.7;
+}
+.event-note {
+  margin-top: 12px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: rgba(26,51,32,0.55);
 }
 .notify-wrap {
   background: rgba(255,255,255,0.55);
@@ -769,14 +819,7 @@ nav.scrolled .nav-btn {
 
 /* ── JOIN CTA ── */
 .join {
-  padding: 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  min-height: 560px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: none;
 }
 .join-photo {
   position: absolute;
@@ -889,33 +932,24 @@ footer {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  nav { padding: 16px 24px; }
+  nav { padding: 14px 18px; gap: 14px; }
+  .nav-logo { font-size: 10px; max-width: 128px; line-height: 1.35; }
   .nav-links { display: none; }
+  .nav-actions { gap: 7px; }
+  .nav-btn { font-size: 9px; padding: 8px 10px; letter-spacing: 0.08em; }
   .hero-photo img { object-position: 18% 20%; }
-  .hero-content { padding: 0 24px 52px; }
-  .hero-h1 { font-size: 56px; }
+  .hero-content { padding: 0 24px 42px; }
+  .hero-h1 { font-size: 52px; margin-bottom: 18px; }
+  .hero-sub { font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
+  .hero-events { grid-template-columns: 1fr; gap: 10px; }
+  .hero-event { padding: 12px 14px; border-radius: 14px; }
+  .hero-event-title { font-size: 19px; }
   .belief { grid-template-columns: 1fr; padding: 40px 24px; }
   .about { grid-template-columns: 1fr; }
   .about-left, .about-right { padding: 52px 24px; }
   .community { padding: 52px 24px 40px; }
   .community-header { grid-template-columns: 1fr; }
   .work-grid { grid-template-columns: 1fr; }
-  .meetup { grid-template-columns: 1fr; }
-  .meetup-left { padding: 40px 24px 12px; }
-  .meetup-right { padding: 8px 24px 40px; }
-  .meetup-h2 { font-size: 38px; }
-  .skillshare { grid-template-columns: 1fr; padding: 0; }
-  .skillshare-intro-block { padding: 38px 24px 12px; }
-  .skillshare-intro-block .section-label { margin-bottom: 12px; }
-  .skillshare-intro-block .section-h2 { font-size: 36px; }
-  .skillshare-intro { font-size: 14px; line-height: 1.65; }
-  .skillshare-form-wrap { margin: 8px 24px 40px; padding: 26px 20px; }
-  .skillshare-actions { grid-template-columns: 1fr; align-items: start; }
-  .modal-overlay { padding: 12px; align-items: flex-start; }
-  .modal-card { max-height: calc(100vh - 24px); }
-  .modal-form { padding: 44px 20px 28px; }
-  .modal-title { font-size: 34px; }
-  .sf-row { grid-template-columns: 1fr; }
   .partners { padding: 44px 18px 52px; }
   .partners-label { margin-bottom: 24px; }
   .partners-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
@@ -1170,18 +1204,17 @@ footer {
 </style>
 </head>
 <body>
-<iframe name="hidden-form-submit" style="display:none;"></iframe>
-
 <!-- NAV -->
 <nav id="nav">
   <div class="nav-logo">STA Yoga Teacher Collective</div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#community">Community</a></li>
-    <li><a href="#meetup">Meetups</a></li>
-    <li><a href="#skillshare">Join</a></li>
   </ul>
-  <a href="https://www.facebook.com/share/g/1E5MrqrHX4/" class="nav-btn" target="_blank">Join FB Group</a>
+  <div class="nav-actions">
+    <a href="https://stayogateachercollective.substack.com/subscribe" class="nav-btn" target="_blank" rel="noopener">Email List</a>
+    <a href="https://www.facebook.com/share/g/1E5MrqrHX4/" class="nav-btn nav-secondary" target="_blank" rel="noopener">FB Group</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -1200,6 +1233,18 @@ footer {
     
     <h1 class="hero-h1">the mat is<br/>the doorway.</h1>
     <p class="hero-sub">For teachers and practitioners who feel the practice calling them further: into community, into care, into action, and into the places where yoga becomes lived.</p>
+    <div class="hero-events" aria-label="Upcoming gatherings">
+      <div class="hero-event">
+        <p class="hero-event-label">Next meetup</p>
+        <h2 class="hero-event-title">Coming soon</h2>
+        <p class="hero-event-detail">September · date and location coming soon.</p>
+      </div>
+      <div class="hero-event">
+        <p class="hero-event-label">Save the date</p>
+        <h2 class="hero-event-title">Beach day</h2>
+        <p class="hero-event-detail">August 1 · sunrise practice, then play.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1215,6 +1260,7 @@ footer {
     <p class="section-label">Who we are</p>
     <h2 class="section-h2">A community<br/>for yoga <em>teachers.</em></h2>
     <p class="about-body">A space where yoga teachers come to skill-share, find support, and move with purpose together. When the work feels heavy, we help each other listen for what is asking to be cared for. This is where practice grows roots in community.</p>
+    <p class="about-body">At the center is teacher-to-teacher support: sharing what we know, asking for what we need, and letting care move both ways. Reciprocity is part of the practice.</p>
     <p class="about-body">All bodies, gender identities, sexual orientations, backgrounds, and lived experiences are welcome here. If you are a yoga teacher looking for community, support, and a place to keep learning alongside others, you belong here.</p>
     <div class="about-tags">
       <span class="tag">Community-led</span>
@@ -1268,85 +1314,6 @@ footer {
   </div>
 </section>
 
-
-<span id="meetup"></span>
-
-<!-- SKILL SHARE -->
-<section class="skillshare" id="skillshare">
-  <div class="skillshare-intro-block">
-    <p class="section-label">Skill sharing collective</p>
-    <h2 class="section-h2">Teachers supporting teachers.</h2>
-    <p class="skillshare-intro">We believe yoga teachers already carry so much wisdom, experience, care, and creativity. This collective is a place to share what we know, ask for what we need, and support one another without always needing another training, course, or credential to feel resourced.</p>
-    <p class="reciprocity-line">Reciprocity is part of the practice: giving, receiving, learning, and sharing in a way that keeps care moving through the community.</p>
-  </div>
-  <div class="skillshare-form-wrap">
-    <h3 class="skillshare-panel-title">Stay connected.</h3>
-    <p class="skillshare-panel-copy">Join the email list on Substack for meetup updates, collective notes, and future skill-sharing invitations. Next meetup details will go there first when they are ready.</p>
-    <a class="sf-submit stay-link" href="https://stayogateachercollective.substack.com/subscribe" target="_blank" rel="noopener">Join the Email List</a>
-    <p class="sf-consent">Email updates live on Substack so you can unsubscribe anytime.</p>
-    <div class="skillshare-actions">
-      <button type="button" class="skillshare-more open-skillshare-modal">Fill Out the Skill Sharing Form</button>
-      <p class="skillshare-note">Tell us what you would love to share, what support you need, or what you are hoping to bring to life in community.</p>
-    </div>
-  </div>
-</section>
-
-<div class="modal-overlay" id="skillshare-modal" aria-hidden="true">
-  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="skillshare-modal-title">
-    <button type="button" class="modal-close" aria-label="Close skill sharing form">&times;</button>
-    <form class="skillshare-form-wrap modal-form site-form" id="skillshare-form" action="https://docs.google.com/forms/d/e/1FAIpQLSfAq6POSUXvnkwiIpL3RXZkUy_UXTxoB4KAkxcBQUYpipvORg/formResponse" method="POST" target="hidden-form-submit" data-success="Submitted">
-      <p class="modal-eyebrow">Skill sharing collective</p>
-      <h2 class="modal-title" id="skillshare-modal-title">Skill Sharing Form</h2>
-      <p class="modal-intro">This form helps us understand the real skills, study, and lived teaching experience people are willing to share, and the support teachers are looking for. We may follow up by email about collective notes, gatherings, and skill-sharing invitations.</p>
-    <input type="hidden" name="fvv" value="1"/>
-    <input type="hidden" name="partialResponse" value='[null,null,"-5704884357235223298"]'/>
-    <input type="hidden" name="pageHistory" value="0"/>
-    <input type="hidden" name="fbzx" value="-5704884357235223298"/>
-    <input type="hidden" name="submissionTimestamp" value="-1"/>
-    <div class="sf-row">
-      <div class="sf-field">
-        <label class="sf-label">Your name</label>
-        <input type="text" name="entry.1359256479" class="sf-input" placeholder="First & last name" required/>
-      </div>
-      <div class="sf-field">
-        <label class="sf-label">Email</label>
-        <input type="email" name="entry.374113687" class="sf-input" placeholder="your@email.com" required/>
-      </div>
-    </div>
-    <div class="sf-row">
-      <div class="sf-field">
-        <label class="sf-label">Where are you in teaching right now?</label>
-        <p class="sf-help">This helps us understand who is in the room without making years of experience the point.</p>
-        <select name="entry.562617189" class="sf-input sf-select" required>
-          <option value="" disabled selected>Select one</option>
-          <option>Currently teaching</option>
-          <option>Yoga teacher, not currently teaching</option>
-          <option>In yoga teacher training</option>
-          <option>Interested in teaching or community practice</option>
-          <option>Studio, wellness, or community organizer</option>
-        </select>
-      </div>
-    </div>
-    <div class="sf-field sf-full">
-      <label class="sf-label">Concrete skills, training, or experience you can share</label>
-      <p class="sf-help">Think teachable skills that can support real people and communities: accessible yoga, chair yoga, trauma-informed teaching, guided meditation, pranayama, sequencing, hands-off assists, class theming, beginners yoga, restorative yoga, yin, prenatal-informed modifications, nervous system education, facilitation, community classes, or creating safer spaces.</p>
-      <textarea name="entry.1165306055" class="sf-input sf-textarea" placeholder="What could others learn from you?" required></textarea>
-    </div>
-    <div class="sf-field sf-full">
-      <label class="sf-label">Support you are looking for</label>
-      <p class="sf-help">What education, mentorship, practice support, or community connection would help your teaching feel more resourced and accessible?</p>
-      <textarea name="entry.832661173" class="sf-input sf-textarea" placeholder="What would support you as a teacher?" required></textarea>
-    </div>
-    <div class="sf-field sf-full">
-      <label class="sf-label">Something you want to bring to life</label>
-      <p class="sf-help">We want to support teachers trying to bring beautiful things to life in community, especially the things that are hard to carry alone. Tell us about anything you are working on or dreaming about. We will keep track of these ideas as we shape future gatherings and support.</p>
-      <textarea name="entry.502878887" class="sf-input sf-textarea" placeholder="What are you dreaming about?"></textarea>
-    </div>
-    <button type="submit" class="sf-submit">Join the Collective →</button>
-  </form>
-  </div>
-</div>
-
 <!-- COMMUNITY SUPPORTERS -->
 <section class="partners">
   <p class="partners-label">Our Community Supporters</p>
@@ -1392,8 +1359,7 @@ footer {
   <ul class="footer-links">
     <li><a href="#about">About</a></li>
     <li><a href="#community">Community</a></li>
-    <li><a href="#meetup">Meetups</a></li>
-    <li><a href="#skillshare">Join</a></li>
+    <li><a href="https://stayogateachercollective.substack.com/subscribe" target="_blank" rel="noopener">Email List</a></li>
   </ul>
   <div class="footer-copy">Grassroots · Free · Always · Est. 2025</div>
 </footer>
@@ -1403,53 +1369,6 @@ footer {
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
-});
-
-document.querySelectorAll('.site-form').forEach((form) => {
-  form.addEventListener('submit', () => {
-    const button = form.querySelector('button[type="submit"]');
-    if (!button) return;
-    const label = form.dataset.success || 'Submitted';
-    const original = button.textContent;
-    setTimeout(() => {
-      button.textContent = `${label} ✓`;
-      form.reset();
-      setTimeout(() => {
-        button.textContent = original;
-      }, 2400);
-    }, 250);
-  });
-});
-
-const skillshareModal = document.getElementById('skillshare-modal');
-const openSkillshareButtons = document.querySelectorAll('.open-skillshare-modal');
-const closeSkillshareButton = skillshareModal?.querySelector('.modal-close');
-
-function openSkillshareModal() {
-  if (!skillshareModal) return;
-  skillshareModal.classList.add('is-open');
-  skillshareModal.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
-  closeSkillshareButton?.focus();
-}
-
-function closeSkillshareModal() {
-  if (!skillshareModal) return;
-  skillshareModal.classList.remove('is-open');
-  skillshareModal.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
-}
-
-openSkillshareButtons.forEach((button) => {
-  button.addEventListener('click', openSkillshareModal);
-});
-
-closeSkillshareButton?.addEventListener('click', closeSkillshareModal);
-skillshareModal?.addEventListener('click', (event) => {
-  if (event.target === skillshareModal) closeSkillshareModal();
-});
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') closeSkillshareModal();
 });
 
 </script>
