@@ -587,12 +587,8 @@ nav.scrolled .nav-btn {
   color: rgba(22,53,34,0.64);
   margin-bottom: 20px;
 }
-.stay-form {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: end;
-  gap: 14px;
-  margin-bottom: 16px;
+.stay-link {
+  margin-bottom: 18px;
 }
 .skillshare-actions {
   border-top: none;
@@ -696,6 +692,8 @@ nav.scrolled .nav-btn {
   padding: 16px 36px;
   width: fit-content;
   margin-top: 8px;
+  text-decoration: none;
+  cursor: pointer;
   transition: background 0.2s, transform 0.15s;
 }
 .sf-submit:hover { background: #7b3fa2; transform: translateY(-2px); }
@@ -912,7 +910,6 @@ footer {
   .skillshare-intro-block .section-h2 { font-size: 36px; }
   .skillshare-intro { font-size: 14px; line-height: 1.65; }
   .skillshare-form-wrap { margin: 8px 24px 40px; padding: 26px 20px; }
-  .stay-form { grid-template-columns: 1fr; }
   .skillshare-actions { grid-template-columns: 1fr; align-items: start; }
   .modal-overlay { padding: 12px; align-items: flex-start; }
   .modal-card { max-height: calc(100vh - 24px); }
@@ -1284,20 +1281,9 @@ footer {
   </div>
   <div class="skillshare-form-wrap">
     <h3 class="skillshare-panel-title">Stay connected.</h3>
-    <p class="skillshare-panel-copy">Add your email for meetup updates, collective notes, and future skill-sharing invitations. Next meetup details will go here first when they are ready.</p>
-    <form class="stay-form site-form" action="https://docs.google.com/forms/d/e/1FAIpQLScAADLcOtKf_bef0tQkyAzhJQs_YCOUKgBwk6wHtOBjWbkYYw/formResponse" method="POST" target="hidden-form-submit" data-success="You're on the list">
-      <div class="sf-field">
-        <label class="sf-label">Email address</label>
-        <input type="email" name="entry.1885601292" class="sf-input" placeholder="your@email.com" required/>
-      </div>
-      <input type="hidden" name="fvv" value="1"/>
-      <input type="hidden" name="partialResponse" value='[null,null,"-487102937994443962"]'/>
-      <input type="hidden" name="pageHistory" value="0"/>
-      <input type="hidden" name="fbzx" value="-487102937994443962"/>
-      <input type="hidden" name="submissionTimestamp" value="-1"/>
-      <button type="submit" class="sf-submit">Keep Me Posted</button>
-    </form>
-    <p class="sf-consent">By submitting, you are asking to receive email from STA Yoga Teacher Collective. You can unsubscribe anytime.</p>
+    <p class="skillshare-panel-copy">Join the email list on Substack for meetup updates, collective notes, and future skill-sharing invitations. Next meetup details will go there first when they are ready.</p>
+    <a class="sf-submit stay-link" href="https://stayogateachercollective.substack.com/subscribe" target="_blank" rel="noopener">Join the Email List</a>
+    <p class="sf-consent">Email updates live on Substack so you can unsubscribe anytime.</p>
     <div class="skillshare-actions">
       <button type="button" class="skillshare-more open-skillshare-modal">Fill Out the Skill Sharing Form</button>
       <p class="skillshare-note">Tell us what you would love to share, what support you need, or what you are hoping to bring to life in community.</p>
